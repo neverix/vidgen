@@ -231,8 +231,8 @@ def load_vid(path, block_size=4):
     blocks = set()
     while len(blocks) < block_size:
         n_group = random.randint(1, block_size)
-        frame_skip = np.random.lognormal(mean=0.5, sigma=1.0)
-        start = random.random() * (n_frames - 1 - frame_skip * n_group)
+        frame_skip = np.exp(random.random() * np.log(n_group))
+        start = random.random() * (n_frames - frame_skip * (n_group - 1))
         is_observable = random.random() > 0.5
         new_frames = set(int(start + i * frame_skip) for i in range(n_group)) - blocks
         blocks.update(new_frames)
