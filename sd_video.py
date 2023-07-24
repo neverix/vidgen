@@ -252,7 +252,7 @@ def load_vid(path, block_size=4):
         if i in blocks:
             frames.append(frame)  # cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
             obs.append(observable[i])
-    cap.release()
+    # cap.release()
     return np.asarray(frames), np.asarray(blocks), np.asarray(obs)
 
 # vid, fps = load_vid(vids[0])
